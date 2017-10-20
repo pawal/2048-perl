@@ -281,6 +281,13 @@ MAINLOOP: { do {
 	$movecount = moveRight if $key eq 'r';
 	$movecount = moveUp    if $key eq 'u';
 	$movecount = moveDown  if $key eq 'd';
+	
+	# Arrow keys send 3 characters, the last one can be used to determine which arrow
+	$movecount = moveLeft  if ord($key) == 68;
+        $movecount = moveRight if ord($key) == 67;
+        $movecount = moveUp    if ord($key) == 65;
+        $movecount = moveDown  if ord($key) == 66;
+	
 	last MAINLOOP if $key eq 'q';
 	$moves++ if $movecount;
 
